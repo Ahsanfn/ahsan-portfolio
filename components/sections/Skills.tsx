@@ -5,29 +5,22 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-[5.5rem] border-b border-border py-20 sm:py-28">
+    <section
+      id="skills"
+      className="scroll-mt-[5.5rem] border-t border-border py-20 sm:py-28"
+    >
       <Container>
-        <SectionHeading
-          eyebrow="Skills"
-          title="Technologies I work with."
-          description="Grouped by area. These are skills and tools I use — not a claim of production ownership for every item."
-        />
+        <SectionHeading eyebrow="Skills" title="What I work with." />
 
-        <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-2">
           {skillCategories.map((category) => (
-            <StaggerItem key={category.title} className="h-full">
-              <article className="h-full rounded-2xl border border-border bg-card p-6">
-                <h3 className="text-sm font-semibold tracking-tight text-foreground">
-                  {category.title}
-                </h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {category.items.map((item) => (
-                    <li key={item} className="skill-chip">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+            <StaggerItem key={category.title}>
+              <h3 className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
+                {category.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground">
+                {category.items.join(" · ")}
+              </p>
             </StaggerItem>
           ))}
         </Stagger>

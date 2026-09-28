@@ -4,83 +4,66 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { HeroBackdrop } from "@/components/hero-backdrop";
-import { HeroAvatar } from "@/components/hero-avatar";
+import { SocialLinks } from "@/components/social-links";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { clipReveal, intro, staggerFast, wordReveal } from "@/lib/motion";
 
-const headlineLead = "Full Stack Developer";
-const headlineRest =
-  " building modern web applications and AI-powered products.";
-const technologies = ["React.js", "Next.js", "Node.js", "TypeScript", "AI"];
+const technologies = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "LLMs",
+  "RAG",
+  "AI Agents",
+];
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const delay = shouldReduceMotion ? 0 : intro.contentDelay;
-  const restWords = headlineRest.trim().split(" ");
 
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden border-b border-border"
-    >
+    <section id="top" className="relative overflow-hidden">
       <HeroBackdrop />
 
-      <Container className="relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-20 sm:py-28">
-        <div className="flex flex-col items-start gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
+      <Container className="relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-24 sm:py-32">
         <motion.div
-          className="min-w-0 max-w-4xl"
+          className="max-w-3xl"
           initial={shouldReduceMotion ? false : "hidden"}
           animate="visible"
           variants={{
             hidden: {},
             visible: {
-              transition: { staggerChildren: 0.08, delayChildren: delay },
+              transition: { staggerChildren: 0.07, delayChildren: delay },
             },
           }}
         >
           <motion.p
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 text-xs font-medium text-accent"
+            className="mb-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-muted"
             variants={wordReveal}
           >
             <span className="availability-dot size-1.5 rounded-full bg-accent" />
             {siteConfig.location}
           </motion.p>
 
-          <h1 className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem] lg:leading-[1.12]">
-            <span className="inline-block overflow-hidden pb-1 align-bottom">
-              <motion.span
-                className="inline-block text-accent"
-                variants={shouldReduceMotion ? wordReveal : clipReveal}
-              >
-                {headlineLead}
-              </motion.span>
-            </span>{" "}
-            {shouldReduceMotion ? (
-              <span>{headlineRest.trim()}</span>
-            ) : (
-              <motion.span
-                className="inline"
-                variants={{
-                  hidden: {},
-                  visible: { transition: { staggerChildren: 0.032 } },
-                }}
-              >
-                {restWords.map((word, index) => (
-                  <motion.span
-                    key={`${word}-${index}`}
-                    className="mr-[0.28em] inline-block"
-                    variants={wordReveal}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </motion.span>
-            )}
+          <h1 className="overflow-hidden pb-1">
+            <motion.span
+              className="block text-balance text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+              variants={shouldReduceMotion ? wordReveal : clipReveal}
+            >
+              {siteConfig.name}
+            </motion.span>
           </h1>
 
           <motion.p
-            className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:text-lg"
+            className="mt-5 text-lg font-medium text-accent sm:text-xl"
+            variants={wordReveal}
+          >
+            {siteConfig.headline}
+          </motion.p>
+
+          <motion.p
+            className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg"
             variants={wordReveal}
           >
             {siteConfig.supportingText}
@@ -91,26 +74,12 @@ export default function Hero() {
             variants={staggerFast}
           >
             <motion.div variants={wordReveal}>
-              <Button
-                href="#projects"
-                size="lg"
-              >
-                View Projects
-              </Button>
-            </motion.div>
-            <motion.div variants={wordReveal}>
-              <Button
-                href="#contact"
-                variant="secondary"
-                size="lg"
-              >
-                Contact Me
-              </Button>
+              <SocialLinks iconClassName="size-11 border border-border" />
             </motion.div>
             <motion.div variants={wordReveal}>
               <Button
                 href={siteConfig.resumePath}
-                variant="ghost"
+                variant="secondary"
                 size="lg"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -125,22 +94,25 @@ export default function Hero() {
           </motion.div>
 
           <motion.ul
-            className="mt-16 flex flex-wrap gap-2"
+            className="mt-14 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-muted"
             variants={staggerFast}
           >
-            {technologies.map((tech) => (
+            {technologies.map((tech, index) => (
               <motion.li
                 key={tech}
                 variants={wordReveal}
-                className="skill-chip rounded-full px-3 py-1"
+                className="flex items-center gap-6"
               >
-                {tech}
+                {index > 0 ? (
+                  <span aria-hidden="true" className="text-border">
+                    ·
+                  </span>
+                ) : null}
+                <span>{tech}</span>
               </motion.li>
             ))}
           </motion.ul>
         </motion.div>
-        <HeroAvatar />
-        </div>
       </Container>
     </section>
   );

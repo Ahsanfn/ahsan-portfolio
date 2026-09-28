@@ -50,3 +50,12 @@ export type Project = {
   featured: boolean;
   status: ProjectStatus;
 };
+
+export type Article = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  date: string;
+  href: string | null;
+};

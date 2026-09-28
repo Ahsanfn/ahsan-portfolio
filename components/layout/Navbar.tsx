@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/data/navigation";
@@ -12,6 +13,8 @@ import { Container } from "@/components/ui/container";
 import { NavLink } from "@/components/ui/nav-link";
 import { intro, wordReveal } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+
+const MotionLink = motion.create(Link);
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -70,8 +73,8 @@ export default function Navbar() {
           scrolled ? "h-14" : "h-16",
         )}
       >
-        <motion.a
-          href="#top"
+        <MotionLink
+          href="/"
           className="flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,7 +87,7 @@ export default function Navbar() {
           <span className="text-sm font-semibold tracking-tight">
             {siteConfig.name}
           </span>
-        </motion.a>
+        </MotionLink>
 
         <motion.nav
           className="hidden items-center gap-1 lg:flex"

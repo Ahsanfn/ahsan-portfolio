@@ -3,11 +3,9 @@ import type { SiteConfig } from "@/types/portfolio";
 export const siteConfig: SiteConfig = {
   name: "Ahsan Akbar",
   shortName: "Ahsan",
-  role: "Full Stack Developer",
-  headline:
-    "Full Stack Developer building modern web applications and AI-powered products.",
-  supportingText:
-    "I build scalable, performant and user-focused applications using React, Next.js, Node.js and modern AI technologies.",
+  role: "AI Engineer & Full Stack Developer",
+  headline: "AI Engineer & Full Stack Developer",
+  supportingText: "Building modern web applications and AI-powered products.",
   email: "ahsansworkflow@gmail.com",
   resumePath: "/resume.pdf",
   location: "Available for remote work",
@@ -25,7 +23,7 @@ export const siteConfig: SiteConfig = {
 
 export const aboutContent = {
   paragraphs: [
-    "I started web development with HTML, CSS and JavaScript, then moved into React, Next.js and full-stack work. Along the way I have built client-facing websites and web applications, integrated APIs, collaborated with product and design teams, and focused on performance and responsiveness.",
-    "I currently work across the stack with a frontend-strong foundation, and I am expanding my backend, cloud, system design and AI engineering skills.",
+    "I'm an AI Engineer and Full Stack Developer focused on modern web and AI products.",
+    "I work across the stack with React, Next.js and TypeScript, and build AI features with LLMs, RAG and AI agents.",
   ],
 };

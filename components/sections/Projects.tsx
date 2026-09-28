@@ -10,16 +10,16 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="scroll-mt-[5.5rem] border-b border-border py-20 sm:py-28"
+      className="scroll-mt-[5.5rem] border-t border-border py-20 sm:py-28"
     >
       <Container>
         <SectionHeading
           eyebrow="Projects"
-          title="Featured work, in progress."
-          description="These cards are placeholders for upcoming case studies. None of these products are claimed as completed shipping work yet."
+          title="Selected work."
+          description="A short selection of what I'm building — marked Coming Soon until there's a live build to share."
         />
 
-        <Stagger className="mt-12 grid gap-5 md:grid-cols-2">
+        <Stagger className="mt-10 grid gap-4 sm:grid-cols-2">
           {featured.map((project) => (
             <StaggerItem key={project.id} className="h-full">
               <ProjectCard project={project} />
